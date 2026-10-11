@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Evidencias - Física I (Avance 1)</title>
+    <!-- Framework de estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Librería para visualización de datos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { padding-top: 70px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; }
+        .section-container { margin-bottom: 40px; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); background-color: #ffffff; }
+        .math-eq { font-family: 'Courier New', Courier, monospace; background: #eef2f5; padding: 4px 8px; border-radius: 4px; font-weight: bold; color: #d63384;}
+        .sim-canvas { border: 1px solid #ced4da; background-color: #e9ecef; border-radius: 8px; width: 100%; }
+        nav { box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Portafolio Física I</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#tema1">Tema 1: Dron</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema2">Tema 2: Salto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema3">Tema 3: Hábitat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema4">Tema 4: Llantas F1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema5">Tema 5: Háptico</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <header class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-dark">Portafolio de Evidencias - Avance 1</h1>
+            <p class="lead text-secondary">Aplicaciones de la Física al Desarrollo de Software</p>
+        </header>
+
+        <!-- TEMA 1 -->
+        <section id="tema1" class="section-container">
+            <h2 class="text-primary border-bottom pb-2 mb-4">Tema 1 — Rastreo y navegación de un dron de reparto</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Sistemas de navegación y control de vuelo en software de drones autónomos de reparto comercial, como Amazon Prime Air.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Cinemática en dos dimensiones (descomposición vectorial).<br>
+                    Posición: <span class="math-eq">r(t) = r₀ + v₀t + ½at²</span><br>
+                    Velocidad: <span class="math-eq">v(t) = v₀ + at</span><br>
+                    En software se programa iterando componentes: <span class="math-eq">x(t) = x₀ + v_{0x}t + ½a_xt²</span> y análogamente para el eje Y.</p>
+                    <p><strong>Justificación:</strong> Modelar la física real resuelve el problema mucho mejor que tener una trayectoria precalculada de "waypoints". Si el dron se encuentra con una ráfaga de viento, un modelo cinemático recalcula la aceleración necesaria para corregir el rumbo en tiempo real y mantiene la previsión exacta del tiempo de llegada, algo imposible con una ruta rígida de tiempos fijos.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Visualización de Datos</h5>
+                    <canvas id="dronChart"></canvas>
+                    <p class="text-muted small mt-2">Fuente de los datos: Perfiles cinemáticos trapezoidales generados simulando una trayectoria de entrega de 11 segundos (aceleración constante, velocidad crucero y frenado coordinado).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 2 -->
+        <section id="tema2" class="section-container">
+            <h2 class="text-primary border-bottom pb-2 mb-4">Tema 2 — El salto del personaje: cómo los motores de juego falsean la gravedad</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Controladores de personajes ("Character Controllers") en motores como Unity o Unreal Engine, utilizados en juegos de plataformas de precisión como <em>Celeste</em> o <em>Super Mario</em>.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Tiro parabólico con aceleración asimétrica.<br>
+                    <span class="math-eq">y(t) = y₀ + v_{0y}t - ½ g_{modificada} t²</span>, donde la velocidad inicial se calcula por <span class="math-eq">v_{0y} = √(2 \cdot g \cdot h_{max})</span></p>
+                    <p><strong>Justificación:</strong> Si los desarrolladores usaran animaciones guionizadas, la altura del salto sería siempre idéntica. Por otro lado, usar la física estricta (gravedad de 9.81 m/s²) hace que el personaje se sienta flotante e incontrolable. Modelar físicamente el tiro parabólico, pero permitiendo alterar variables (como aplicar una gravedad más fuerte al caer que al subir), logra una respuesta perfecta e instantánea que reacciona a cuánto tiempo el jugador presiona el botón.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Simulación Interactiva</h5>
+                    <div class="card p-4 bg-light">
+                        <label class="fw-bold">Impulso de Salto (Velocidad inicial): <span id="v0-val" class="text-primary">15</span> m/s</label>
+                        <input type="range" id="v0-slider" min="5" max="30" value="15" class="form-range mb-3">
+                        
+                        <label class="fw-bold">Gravedad en la caída (Aceleración): <span id="g-val" class="text-danger">9.8</span> m/s²</label>
+                        <input type="range" id="g-slider" min="2" max="25" value="9.8" step="0.1" class="form-range mb-3">
+                        
+                        <button id="btn-jump" class="btn btn-primary w-100 fw-bold">EJECUTAR SALTO</button>
+                        <canvas id="jumpCanvas" width="400" height="200" class="sim-canvas mt-3"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 3 -->
+        <section id="tema3" class="section-container">
+            <h2 class="text-primary border-bottom pb-2 mb-4">Tema 3 — Gravedad artificial por rotación en hábitats espaciales</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Simuladores de diseño orbital (ej. <em>Kerbal Space Program</em>) y software de experiencias de Realidad Virtual orientadas al espacio, simulando la estación Endurance (Interestelar).</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Movimiento circular uniforme y fuerza centrípeta.<br>
+                    <span class="math-eq">a_c = v² / r = ω² \cdot r</span>. Para lograr una aceleración equivalente a la gravedad, igualamos <span class="math-eq">a_c = g</span> y la frecuencia angular requerida se obtiene mediante <span class="math-eq">ω = √(g / r)</span>.</p>
+                    <p><strong>Justificación:</strong> Forzar un vector de gravedad descendente unificado a nivel de motor provocaría comportamientos defectuosos en una estación anular. Modelar esto mediante cinemática rotacional permite al motor de física (como PhysX o Havok) calcular correctamente la fuerza normal empujando dinámicamente cualquier objeto hacia el "piso" exterior curvo del hábitat, preservando la inercia del sistema de forma procedural en lugar de engañar al software.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Diagrama y Caso Numérico</h5>
+                    <div class="card p-3 border-0 shadow-sm text-center">
+                        <svg width="100%" height="250" viewBox="0 0 300 250">
+                            <!-- Anillo y Eje -->
+                            <circle cx="150" cy="125" r="100" fill="none" stroke="#333" stroke-width="4"/>
+                            <circle cx="150" cy="125" r="5" fill="red"/>
+                            <line x1="150" y1="125" x2="150" y2="10" stroke="gray" stroke-dasharray="5"/>
+                            <text x="155" y="25" font-size="12" fill="gray">Eje de rotación (ω)</text>
+                            
+                            <!-- Radio -->
+                            <line x1="150" y1="125" x2="250" y2="125" stroke="green" stroke-width="2"/>
+                            <text x="180" y="115" fill="green" font-size="14" font-weight="bold">Radio (r)</text>
+                            
+                            <!-- Personaje / Objeto -->
+                            <rect x="240" y="115" width="10" height="20" fill="purple"/>
+                            
+                            <!-- Aceleración Centrípeta -->
+                            <line x1="245" y1="125" x2="190" y2="125" stroke="red" stroke-width="3" marker-end="url(#arrow)"/>
+                            <text x="195" y="145" fill="red" font-size="14" font-weight="bold">a_c (Hacia el centro)</text>
+                            
+                            <!-- Marcador flecha -->
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="red"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="text-start mt-3 p-3 bg-light rounded">
+                            <h6 class="fw-bold text-success">Caso Numérico:</h6>
+                            <p class="mb-1">¿Qué rotación necesitamos en un radio de <strong>100 metros</strong> para generar <strong>1 g (9.81 m/s²)</strong> de gravedad aparente?</p>
+                            <ul class="mb-0 small">
+                                <li>Despeje: ω = √(9.81 / 100) = √0.0981 ≈ <strong>0.313 rad/s</strong></li>
+                                <li>Frecuencia: f = ω / 2π = 0.313 / 6.2832 ≈ 0.0498 Hz</li>
+                                <li>Revoluciones por minuto: RPM = f × 60 = 0.0498 × 60 ≈ <strong>2.99 RPM</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 4 -->
+        <section id="tema4" class="section-container">
+            <h2 class="text-primary border-bottom pb-2 mb-4">Tema 4 — Llantas de Fórmula 1: la ventana de temperatura y el agarre</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Desarrollo de modelos de telemetría y tracción en simuladores de carreras (Simracing) profesionales como <em>iRacing</em> o <em>Assetto Corsa Competizione</em>.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Fuerza de fricción dependiente del estado termodinámico.<br>
+                    <span class="math-eq">F_{fricción} = μ(T) \cdot F_{Normal}</span>. Aquí, la gran diferencia es que el coeficiente de fricción estático y cinético <span class="math-eq">μ(T)</span> no es una constante genérica, sino una variable empírica ligada a la temperatura de la superficie de contacto.</p>
+                    <p><strong>Justificación:</strong> Asignar un valor estático a la fricción crearía un modelo simple (juegos tipo "Arcade") donde los frenos o curvas cerradas funcionan igual en la primera vuelta y en la vuelta 50. Modelar la física incorporando la curva térmica fuerza al simulador a calcular transferencias de calor, exigiendo a los jugadores gestionar la estrategia, realizar vueltas de calentamiento y cuidar los neumáticos para mantenerlos en la ventana operativa.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Visualización de Datos</h5>
+                    <canvas id="tireChart"></canvas>
+                    <p class="text-muted small mt-2">Fuente de los datos: Curva característica paramétrica representativa de los modelos de llantas "Fórmula Mágica de Pacejka", demostrando el "Pico de Agarre" alrededor de los 100°C.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 5 -->
+        <section id="tema5" class="section-container">
+            <h2 class="text-primary border-bottom pb-2 mb-4">Tema 5 — El resorte virtual detrás de un control háptico</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Programación de la API de retroalimentación de fuerza para los gatillos adaptativos (Adaptive Triggers) del control DualSense de la PS5.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Ley de Hooke interactuando con la Tercera Ley de Newton.<br>
+                    El gatillo simula una fuerza restauradora según <span class="math-eq">F_{resorte} = -k \Delta x</span>. Para que el jugador lo sienta, la API envía a los motores del control una fuerza resistiva opuesta al movimiento del dedo: <span class="math-eq">F_{motor} = k \Delta x</span>, donde <span class="math-eq">\Delta x</span> es cuánto se ha hundido el gatillo.</p>
+                    <p><strong>Justificación:</strong> Los motores de vibración clásicos reproducen animaciones de vibración estáticas o frecuencias audibles (Rumble). En cambio, recibir la variable de compresión del dedo (Δx) en tiempo real para procesar un modelo físico de Hooke hace que el hardware adapte dinámicamente la fuerza del engranaje en cuestión de milisegundos. Esta es la única forma de convencer al cerebro humano de que está tensando algo material, engañando al tacto.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Multimedia con Análisis</h5>
+                    <div class="mb-3 text-center">
+                        <iframe width="100%" height="350" src="https://www.youtube.com/embed/S1dwxzIZ0P0" title="The Difference Between Trigger Stoppers and The Adaptive Triggers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; border: 1px solid #dee2e6; box-shadow: 0 4px 6px rgba(0,0,0,0.05);"></iframe>
+                    </div>
+                        <h6 class="text-primary fw-bold mb-1">Análisis de la mecánica observada (Minuto 0:22):</h6>
+                        <p class="mb-0 small">En el instante exacto en que se muestra la mecánica del <strong>arco y flecha</strong>, el desplazamiento del gatillo (<span class="math-eq">\Delta x</span>) aumenta gradualmente. El motor de retroalimentación incrementa la resistencia linealmente, simulando el valor <span class="math-eq">k</span> de la cuerda. Cuando el nivel de tensión virtual llega a su pico y la flecha es soltada por el jugador en pantalla, el software anula repentinamente la variable: <span class="math-eq">k = 0</span>. El cerebro interpreta esta aniquilación inmediata de la fuerza resistiva como la ruptura o liberación del objeto físico en el mundo real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Script principal de lógica, matemáticas y simulaciones -->
+    <script>
+        // Lógica - Tema 1: Gráfica Cinemática Dron
+        const ctxDron = document.getElementById('dronChart').getContext('2d');
+        const tiempos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        const posicion = [0, 2, 8, 18, 30, 42, 54, 66, 76, 82, 84, 84];
+        const velocidad = [0, 4, 8, 12, 12, 12, 12, 12, 8, 4, 0, 0];
+        const aceleracion = [4, 4, 4, 0, 0, 0, 0, -4, -4, -4, 0, 0];
+
+        new Chart(ctxDron, {
+            type: 'line',
+            data: {
+                labels: tiempos,
+                datasets: [
+                    { label: 'Posición (m)', data: posicion, borderColor: '#0d6efd', tension: 0.3 },
+                    { label: 'Velocidad (m/s)', data: velocidad, borderColor: '#198754', tension: 0.3 },
+                    { label: 'Aceleración (m/s²)', data: aceleracion, borderColor: '#dc3545', tension: 0.3 }
+                ]
+            },
+            options: { responsive: true, scales: { x: { title: { display: true, text: 'Tiempo (s)' } }, y: { title: { display: true, text: 'Magnitud Escalar' } } } }
+        });
+
+        // Lógica - Tema 4: Gráfica Coeficiente Térmico
+        const ctxTire = document.getElementById('tireChart').getContext('2d');
+        const temperaturas = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
+        const agarre = [0.70, 0.82, 0.95, 1.15, 1.30, 1.45, 1.35, 1.10, 0.85, 0.70]; // Curva gaussiana/empírica
+        
+        new Chart(ctxTire, {
+            type: 'line',
+            data: {
+                labels: temperaturas,
+                datasets: [{
+                    label: 'Coeficiente de Agarre Efectivo (μ)',
+                    data: agarre,
+                    borderColor: '#6f42c1',
+                    backgroundColor: 'rgba(111, 66, 193, 0.15)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: { responsive: true, scales: { x: { title: { display: true, text: 'Temperatura de la superficie (°C)' } }, y: { title: { display: true, text: 'Coeficiente μ' } } } }
+        });
+
+        // Lógica - Tema 2: Simulación Canvas Salto (Motor Físico Básico)
+        const canvas = document.getElementById('jumpCanvas');
+        const ctx = canvas.getContext('2d');
+        const v0Slider = document.getElementById('v0-slider');
+        const gSlider = document.getElementById('g-slider');
+        const btnJump = document.getElementById('btn-jump');
+        
+        let charY = 180;
+        let isJumping = false;
+        let currentVelocity = 0;
+        let animFrame;
+
+        v0Slider.oninput = function() { document.getElementById('v0-val').innerText = this.value; }
+        gSlider.oninput = function() { document.getElementById('g-val').innerText = this.value; }
+
+        function drawScene() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Piso
+            ctx.fillStyle = '#6c757d';
+            ctx.fillRect(0, 180, canvas.width, 20);
+            // Personaje
+            ctx.fillStyle = '#0dcaf0';
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur = 5;
+            ctx.fillRect(180, charY - 20, 20, 20);
+            ctx.shadowBlur = 0;
+        }
+
+        function physicsLoop() {
+            if (!isJumping) return;
+            // Ecuación cinemática discreta
+            let g = parseFloat(gSlider.value) * 0.1; // Escalado de aceleración para 60fps canvas
+            currentVelocity -= g;
+            charY -= currentVelocity;
+
+            // Colisión con el piso
+            if (charY >= 180) {
+                charY = 180;
+                isJumping = false;
+                currentVelocity = 0;
+                cancelAnimationFrame(animFrame);
+            } else {
+                animFrame = requestAnimationFrame(physicsLoop);
+            }
+            drawScene();
+        }
+
+        btnJump.addEventListener('click', () => {
+            if(!isJumping) {
+                currentVelocity = parseFloat(v0Slider.value) * 0.5; // Escalado de impulso inicial
+                isJumping = true;
+                physicsLoop();
+            }
+        });
+
+        drawScene(); // Inicializar estado estático
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
