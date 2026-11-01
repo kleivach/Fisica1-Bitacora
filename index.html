@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Evidencias - Física I (Avance 1)</title>
+    <title>Portafolio de Evidencias - Física I (Avances 1 y 2)</title>
     <!-- Framework de estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Librería para visualización de datos -->
@@ -26,11 +26,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#tema1">Tema 1: Dron</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tema2">Tema 2: Salto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tema3">Tema 3: Hábitat</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tema4">Tema 4: Llantas F1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tema5">Tema 5: Háptico</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema1">1: Dron</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema2">2: Salto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema3">3: Hábitat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema4">4: F1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tema5">5: Háptico</a></li>
+                    <li class="nav-item"><a class="nav-link text-info fw-bold" href="#tema6">6: Freno EV</a></li>
+                    <li class="nav-item"><a class="nav-link text-info fw-bold" href="#tema7">7: Rebote</a></li>
+                    <li class="nav-item"><a class="nav-link text-info fw-bold" href="#tema8">8: Ruedas</a></li>
+                    <li class="nav-item"><a class="nav-link text-info fw-bold" href="#tema9">9: Voyager</a></li>
                 </ul>
             </div>
         </div>
@@ -38,9 +42,11 @@
 
     <div class="container mt-4">
         <header class="text-center mb-5">
-            <h1 class="display-5 fw-bold text-dark">Portafolio de Evidencias - Avance 1</h1>
-            <p class="lead text-secondary">Aplicaciones de la Física al Desarrollo de Software</p>
+            <h1 class="display-5 fw-bold text-dark">Portafolio de Evidencias - Avance 2</h1>
+            <p class="lead text-secondary">Aplicaciones de la Física al Desarrollo de Software (Temas 1 al 9)</p>
         </header>
+
+        <!-- TEMAS DEL AVANCE 1 -->
 
         <!-- TEMA 1 -->
         <section id="tema1" class="section-container">
@@ -149,15 +155,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
-                    <p><strong>El caso concreto:</strong> Desarrollo de modelos de telemetría y tracción en simuladores de carreras (Simracing) profesionales como <em>iRacing</em> o <em>Assetto Corsa Competizione</em>.</p>
+                    <p><strong>El caso concreto:</strong> Desarrollo de modelos de telemetría y tracción en simuladores de carreras profesionales como <em>iRacing</em> o <em>Assetto Corsa Competizione</em>.</p>
                     <p><strong>Concepto físico (Ecuación):</strong> Fuerza de fricción dependiente del estado termodinámico.<br>
-                    <span class="math-eq">F_{fricción} = μ(T) \cdot F_{Normal}</span>. Aquí, la gran diferencia es que el coeficiente de fricción estático y cinético <span class="math-eq">μ(T)</span> no es una constante genérica, sino una variable empírica ligada a la temperatura de la superficie de contacto.</p>
-                    <p><strong>Justificación:</strong> Asignar un valor estático a la fricción crearía un modelo simple (juegos tipo "Arcade") donde los frenos o curvas cerradas funcionan igual en la primera vuelta y en la vuelta 50. Modelar la física incorporando la curva térmica fuerza al simulador a calcular transferencias de calor, exigiendo a los jugadores gestionar la estrategia, realizar vueltas de calentamiento y cuidar los neumáticos para mantenerlos en la ventana operativa.</p>
+                    <span class="math-eq">F_{fricción} = μ(T) \cdot F_{Normal}</span>. Aquí, el coeficiente de fricción <span class="math-eq">μ(T)</span> no es constante, es una variable empírica ligada a la temperatura.</p>
+                    <p><strong>Justificación:</strong> Asignar un valor estático a la fricción crearía un modelo simple donde el auto dobla igual en la primera vuelta que en la cincuenta. Modelar la física incorporando la curva térmica exige al motor calcular transferencias de calor, obligando al jugador a realizar vueltas de calentamiento y gestionar la estrategia para mantener las gomas en su "ventana operativa".</p>
                 </div>
                 <div class="col-lg-6">
                     <h5 class="fw-bold">(b) Recurso: Visualización de Datos</h5>
                     <canvas id="tireChart"></canvas>
-                    <p class="text-muted small mt-2">Fuente de los datos: Curva característica paramétrica representativa de los modelos de llantas "Fórmula Mágica de Pacejka", demostrando el "Pico de Agarre" alrededor de los 100°C.</p>
+                    <p class="text-muted small mt-2">Fuente de los datos: Representación paramétrica del "Pico de Agarre" alrededor de los 100°C basado en el modelo "Magic Formula" de Pacejka.</p>
                 </div>
             </div>
         </section>
@@ -165,126 +171,318 @@
         <!-- TEMA 5 -->
         <section id="tema5" class="section-container">
             <h2 class="text-primary border-bottom pb-2 mb-4">Tema 5 — El resorte virtual detrás de un control háptico</h2>
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
-                    <p><strong>El caso concreto:</strong> Programación de la API de retroalimentación de fuerza para los gatillos adaptativos (Adaptive Triggers) del control DualSense de la PS5.</p>
-                    <p><strong>Concepto físico (Ecuación):</strong> Ley de Hooke interactuando con la Tercera Ley de Newton.<br>
-                    El gatillo simula una fuerza restauradora según <span class="math-eq">F_{resorte} = -k \Delta x</span>. Para que el jugador lo sienta, la API envía a los motores del control una fuerza resistiva opuesta al movimiento del dedo: <span class="math-eq">F_{motor} = k \Delta x</span>, donde <span class="math-eq">\Delta x</span> es cuánto se ha hundido el gatillo.</p>
-                    <p><strong>Justificación:</strong> Los motores de vibración clásicos reproducen animaciones de vibración estáticas o frecuencias audibles (Rumble). En cambio, recibir la variable de compresión del dedo (Δx) en tiempo real para procesar un modelo físico de Hooke hace que el hardware adapte dinámicamente la fuerza del engranaje en cuestión de milisegundos. Esta es la única forma de convencer al cerebro humano de que está tensando algo material, engañando al tacto.</p>
+                    <p><strong>El caso concreto:</strong> Programación de la API de retroalimentación de fuerza para los gatillos adaptativos (Adaptive Triggers) del control DualSense de PlayStation 5.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Ley de Hooke y Tercera Ley de Newton.<br>
+                    Fuerza resistiva comandada por software: <span class="math-eq">F_{motor} = k \cdot \Delta x</span>, donde <span class="math-eq">\Delta x</span> es el hundimiento del gatillo y <span class="math-eq">k</span> la rigidez virtual.</p>
+                    <p><strong>Justificación:</strong> Los motores de vibración clásicos reproducen animaciones pregrabadas. En cambio, recibir el desplazamiento (Δx) en tiempo real para procesar un modelo físico de Hooke permite al hardware adaptar la resistencia del motor en milisegundos. Esta simulación física es la única forma de engañar al tacto y convencer al cerebro de que está tensando un resorte real.</p>
                 </div>
                 <div class="col-lg-6">
                     <h5 class="fw-bold">(b) Recurso: Multimedia con Análisis</h5>
                     <div class="mb-3 text-center">
-                        <iframe width="100%" height="350" src="https://www.youtube.com/embed/S1dwxzIZ0P0" title="The Difference Between Trigger Stoppers and The Adaptive Triggers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; border: 1px solid #dee2e6; box-shadow: 0 4px 6px rgba(0,0,0,0.05);"></iframe>
+                        <iframe width="100%" height="250" src="https://www.youtube.com/embed/S1dwxzIZ0P0" title="Adaptive Triggers" frameborder="0" allowfullscreen style="border-radius: 8px; border: 1px solid #dee2e6;"></iframe>
                     </div>
-                        <h6 class="text-primary fw-bold mb-1">Análisis de la mecánica observada (Minuto 0:22):</h6>
-                        <p class="mb-0 small">En el instante exacto en que se muestra la mecánica del <strong>arco y flecha</strong>, el desplazamiento del gatillo (<span class="math-eq">\Delta x</span>) aumenta gradualmente. El motor de retroalimentación incrementa la resistencia linealmente, simulando el valor <span class="math-eq">k</span> de la cuerda. Cuando el nivel de tensión virtual llega a su pico y la flecha es soltada por el jugador en pantalla, el software anula repentinamente la variable: <span class="math-eq">k = 0</span>. El cerebro interpreta esta aniquilación inmediata de la fuerza resistiva como la ruptura o liberación del objeto físico en el mundo real.</p>
+                    <div class="p-3 bg-light rounded">
+                        <h6 class="text-primary fw-bold mb-1">Análisis (Minuto 0:22 - Arco y flecha):</h6>
+                        <p class="mb-0 small">A medida que el jugador oprime el gatillo, el desplazamiento (<span class="math-eq">\Delta x</span>) aumenta. El software incrementa la resistencia linealmente. Al soltar la flecha, el programa anula instantáneamente la constante elástica (<span class="math-eq">k = 0</span>). Esta desaparición súbita de la fuerza de reacción se percibe hápticamente como la liberación o ruptura del objeto físico.</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- NUEVOS TEMAS DEL AVANCE 2 -->
+
+        <!-- TEMA 6 -->
+        <section id="tema6" class="section-container">
+            <h2 class="text-info border-bottom pb-2 mb-4">Tema 6 — Frenado regenerativo en un vehículo eléctrico</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Software del Sistema de Gestión de Baterías (BMS) y Control de Inversores en vehículos eléctricos como Tesla o Rivian.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Energía cinética y transformación de energía.<br>
+                    Energía Cinética: <span class="math-eq">K = ½mv²</span><br>
+                    Energía Recuperada: <span class="math-eq">E_{rec} = \eta \cdot |½m(v_f^2 - v_i^2)|</span> donde <span class="math-eq">\eta</span> es la eficiencia de conversión del inversor (aprox 70-80%).</p>
+                    <p><strong>Justificación:</strong> Utilizar un perfil de frenado precalculado (fijo) sería peligroso e ineficiente. El software debe medir la variación real de la energía cinética del coche y calcular en vivo qué porcentaje puede convertirse en torque magnético inverso. Modelar esta física permite balancear la energía sin depender totalmente de las balatas de fricción, maximizando la recarga de la batería y evitando sobrecalentar el inversor.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Visualización de Datos</h5>
+                    <canvas id="evChart"></canvas>
+                    <p class="text-muted small mt-2">Fuente de los datos: Curvas construidas con base en datos de telemetría de eficiencia de un ciclo de conducción estándar (frenada desde 100km/h con 75% de eficiencia regenerativa electromecánica).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 7 -->
+        <section id="tema7" class="section-container">
+            <h2 class="text-info border-bottom pb-2 mb-4">Tema 7 — El coeficiente de restitución en un motor de videojuego</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Motores de físicas integrados (Physics Engines) como Havok o el Chaos Engine de Unreal, aplicados a físicas de balones en juegos como <em>Rocket League</em> o <em>FIFA</em>.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Colisiones y coeficiente de restitución.<br>
+                    Velocidad tras el impacto contra suelo estático: <span class="math-eq">v_f = -e \cdot v_i</span><br>
+                    Donde <span class="math-eq">e</span> es el coeficiente de restitución. Un rebote elástico ideal es 1, e inelástico es menor a 1.</p>
+                    <p><strong>Justificación:</strong> Programar animaciones de rebote precalculadas no escala sistémicamente: ¿qué pasa si el balón cae de 2 metros vs 50 metros? Asignar el parámetro <span class="math-eq">e</span> al material permite que el motor calcule dinámicamente la disipación del momento lineal. Si <span class="math-eq">e</span> es 0.1, la pelota cae pesada como plomo; si es 0.8, rebota como baloncesto. Esto garantiza respuestas emergentes siempre coherentes.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Simulación Interactiva</h5>
+                    <div class="card p-4 bg-light text-center">
+                        <label class="fw-bold mb-2">Coeficiente de Restitución (e): <span id="e-val" class="text-info fs-5">0.75</span></label>
+                        <input type="range" id="e-slider" min="0.1" max="1.1" value="0.75" step="0.05" class="form-range mb-3">
+                        <div class="d-flex justify-content-between text-muted small mb-3">
+                            <span>Bola de boliche (Inelástico)</span>
+                            <span>Superbola (Elástico)</span>
+                        </div>
+                        <button id="btn-drop" class="btn btn-info w-100 fw-bold text-white mb-3">SOLTAR PELOTA</button>
+                        <canvas id="bounceCanvas" width="400" height="200" class="sim-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 8 -->
+        <section id="tema8" class="section-container">
+            <h2 class="text-info border-bottom pb-2 mb-4">Tema 8 — Ruedas de reacción: cómo un satélite se gira sin empujarse contra nada</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Software de Control de Actitud y Determinación (ADCS) en sondas y telescopios espaciales (como el telescopio Hubble).</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Conservación del momento angular y torque.<br>
+                    Momento del sistema cerrado es cero: <span class="math-eq">\Delta L_{satélite} + \Delta L_{rueda} = 0</span><br>
+                    Esto significa que <span class="math-eq">I_{sat} \cdot \Delta \omega_{sat} = -I_{rueda} \cdot \Delta \omega_{rueda}</span>.</p>
+                    <p><strong>Justificación:</strong> El software del satélite no puede decirle al objeto "gira 20 grados" como en un software 3D comercial. En el vacío no hay fricción. El código debe comandar aceleración a los motores de una rueda interna; al girar la rueda en un sentido, por conservación del momento, el cuerpo del satélite rota lentamente en el opuesto. El modelado riguroso es la única manera de orientar sensores espaciales con precisión.</p>
+                </div>
+                <div class="col-lg-7">
+                    <h5 class="fw-bold">(b) Recurso: Diagrama de intercambio y Saturación</h5>
+                    <div class="card p-3 border-0 shadow-sm text-center">
+                        <svg width="100%" height="220" viewBox="0 0 400 220">
+                            <!-- Satelite Body -->
+                            <rect x="100" y="20" width="200" height="180" fill="#e9ecef" stroke="#343a40" stroke-width="4" rx="10"/>
+                            <!-- Paneles Solares -->
+                            <rect x="20" y="80" width="80" height="60" fill="#0d6efd" stroke="#000" stroke-width="2"/>
+                            <rect x="300" y="80" width="80" height="60" fill="#0d6efd" stroke="#000" stroke-width="2"/>
+                            
+                            <!-- Rueda de Reaccion -->
+                            <circle cx="200" cy="110" r="50" fill="#6c757d" stroke="#212529" stroke-width="3"/>
+                            <circle cx="200" cy="110" r="10" fill="#212529"/>
+                            
+                            <!-- Flecha giro rueda -->
+                            <path d="M 180 65 A 50 50 0 0 1 220 65" fill="none" stroke="#dc3545" stroke-width="4" marker-end="url(#arrow-red)"/>
+                            <text x="145" y="55" fill="#dc3545" font-weight="bold" font-size="14">Torque Motor (Rueda)</text>
+
+                            <!-- Flecha reaccion satelite -->
+                            <path d="M 230 190 A 80 80 0 0 1 170 190" fill="none" stroke="#198754" stroke-width="4" marker-end="url(#arrow-green)"/>
+                            <text x="150" y="210" fill="#198754" font-weight="bold" font-size="14">Giro Opuesto (Satélite)</text>
+
+                            <!-- Markers -->
+                            <defs>
+                                <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#dc3545"/>
+                                </marker>
+                                <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#198754"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                        <div class="text-start mt-3 p-3 bg-light rounded border border-warning border-start-0 border-end-0 border-bottom-0 border-3">
+                            <h6 class="fw-bold text-warning mb-1">El problema de la Saturación de la Rueda</h6>
+                            <p class="mb-0 small">El software rastrea la velocidad <span class="math-eq">\omega</span> de la rueda. Si fuerzas perturbadoras (como el viento solar) obligan a la rueda a girar constantemente para mantener al satélite estable, la rueda alcanzará su RPM máximo de diseño (<strong>saturación</strong>). En este punto, no se puede acelerar más (<span class="math-eq">\Delta \omega = 0</span>), por lo que el torque es nulo. El software detecta esto y dispara pequeños cohetes propulsores externos para descargar el momento acumulado de la rueda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 9 -->
+        <section id="tema9" class="section-container">
+            <h2 class="text-info border-bottom pb-2 mb-4">Tema 9 — Asistencia gravitatoria: cómo la Voyager ganó velocidad sin gastar combustible</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(a) Caso de uso en Ingeniería del Software</h5>
+                    <p><strong>El caso concreto:</strong> Software de astrodinámica y diseño de trayectorias (ej. GMAT de la NASA o STK) utilizado para planificar misiones interplanetarias.</p>
+                    <p><strong>Concepto físico (Ecuación):</strong> Gravitación universal y conservación del momento lineal (en el marco de referencia del Sol).<br>
+                    Velocidad post-encuentro (aproximación elástica 1D): <span class="math-eq">v_{salida} \approx v_{entrada} + 2v_{planeta}</span>.<br>
+                    La sonda "roba" momento orbital al planeta intercambiando energía potencial y cinética sin romper las leyes termodinámicas.</p>
+                    <p><strong>Justificación:</strong> Trazar trayectorias directas a Neptuno asumiendo que los cuerpos están quietos exigiría cohetes de un tamaño imposible, llenos de combustible. El software de astrodinámica integra las ecuaciones gravitacionales n-cuerpos en el tiempo, iterando simulaciones que descubren una ventana exacta (alineación planetaria) donde la gravedad del planeta puede actuar como una "honda", transfiriendo velocidad extra gratis.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold">(b) Recurso: Visualización de Datos</h5>
+                    <canvas id="voyagerChart"></canvas>
+                    <p class="text-muted small mt-2">Fuente de los datos: Perfil heliocéntrico de la Misión Voyager 2. Se aprecian las transferencias de energía (saltos en la velocidad) durante las asistencias en Júpiter, Saturno y Urano. Datos referenciados del archivo JPL de NASA.</p>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <!-- Script principal de lógica, matemáticas y simulaciones -->
     <script>
-        // Lógica - Tema 1: Gráfica Cinemática Dron
+        /* ============================
+           TEMAS 1 Y 4 (AVANCE 1)
+           ============================ */
+        // Gráfica Cinemática Dron
         const ctxDron = document.getElementById('dronChart').getContext('2d');
-        const tiempos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-        const posicion = [0, 2, 8, 18, 30, 42, 54, 66, 76, 82, 84, 84];
-        const velocidad = [0, 4, 8, 12, 12, 12, 12, 12, 8, 4, 0, 0];
-        const aceleracion = [4, 4, 4, 0, 0, 0, 0, -4, -4, -4, 0, 0];
-
         new Chart(ctxDron, {
             type: 'line',
             data: {
-                labels: tiempos,
+                labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
                 datasets: [
-                    { label: 'Posición (m)', data: posicion, borderColor: '#0d6efd', tension: 0.3 },
-                    { label: 'Velocidad (m/s)', data: velocidad, borderColor: '#198754', tension: 0.3 },
-                    { label: 'Aceleración (m/s²)', data: aceleracion, borderColor: '#dc3545', tension: 0.3 }
+                    { label: 'Posición (m)', data: [0, 2, 8, 18, 30, 42, 54, 66, 76, 82, 84, 84], borderColor: '#0d6efd', tension: 0.3 },
+                    { label: 'Velocidad (m/s)', data: [0, 4, 8, 12, 12, 12, 12, 12, 8, 4, 0, 0], borderColor: '#198754', tension: 0.3 },
+                    { label: 'Aceleración (m/s²)', data: [4, 4, 4, 0, 0, 0, 0, -4, -4, -4, 0, 0], borderColor: '#dc3545', tension: 0.3 }
                 ]
             },
-            options: { responsive: true, scales: { x: { title: { display: true, text: 'Tiempo (s)' } }, y: { title: { display: true, text: 'Magnitud Escalar' } } } }
+            options: { responsive: true, scales: { x: { title: { display: true, text: 'Tiempo (s)' } }, y: { title: { display: true, text: 'Magnitud' } } } }
         });
 
-        // Lógica - Tema 4: Gráfica Coeficiente Térmico
+        // Gráfica Coeficiente Térmico
         const ctxTire = document.getElementById('tireChart').getContext('2d');
-        const temperaturas = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140];
-        const agarre = [0.70, 0.82, 0.95, 1.15, 1.30, 1.45, 1.35, 1.10, 0.85, 0.70]; // Curva gaussiana/empírica
-        
         new Chart(ctxTire, {
             type: 'line',
             data: {
-                labels: temperaturas,
+                labels: [50, 60, 70, 80, 90, 100, 110, 120, 130, 140],
                 datasets: [{
                     label: 'Coeficiente de Agarre Efectivo (μ)',
-                    data: agarre,
-                    borderColor: '#6f42c1',
-                    backgroundColor: 'rgba(111, 66, 193, 0.15)',
-                    fill: true,
-                    tension: 0.4
+                    data: [0.70, 0.82, 0.95, 1.15, 1.30, 1.45, 1.35, 1.10, 0.85, 0.70],
+                    borderColor: '#6f42c1', backgroundColor: 'rgba(111, 66, 193, 0.15)', fill: true, tension: 0.4
                 }]
             },
-            options: { responsive: true, scales: { x: { title: { display: true, text: 'Temperatura de la superficie (°C)' } }, y: { title: { display: true, text: 'Coeficiente μ' } } } }
+            options: { responsive: true, scales: { x: { title: { display: true, text: 'Temperatura (°C)' } } } }
         });
 
-        // Lógica - Tema 2: Simulación Canvas Salto (Motor Físico Básico)
-        const canvas = document.getElementById('jumpCanvas');
-        const ctx = canvas.getContext('2d');
-        const v0Slider = document.getElementById('v0-slider');
-        const gSlider = document.getElementById('g-slider');
-        const btnJump = document.getElementById('btn-jump');
+        /* ============================
+           TEMA 2 (AVANCE 1) - SIMULACIÓN
+           ============================ */
+        const canvasJump = document.getElementById('jumpCanvas');
+        const ctxJ = canvasJump.getContext('2d');
+        let charY = 180; let isJumping = false; let currentVel = 0; let animFrameJ;
         
-        let charY = 180;
-        let isJumping = false;
-        let currentVelocity = 0;
-        let animFrame;
+        document.getElementById('v0-slider').oninput = function() { document.getElementById('v0-val').innerText = this.value; }
+        document.getElementById('g-slider').oninput = function() { document.getElementById('g-val').innerText = this.value; }
 
-        v0Slider.oninput = function() { document.getElementById('v0-val').innerText = this.value; }
-        gSlider.oninput = function() { document.getElementById('g-val').innerText = this.value; }
-
-        function drawScene() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Piso
-            ctx.fillStyle = '#6c757d';
-            ctx.fillRect(0, 180, canvas.width, 20);
-            // Personaje
-            ctx.fillStyle = '#0dcaf0';
-            ctx.shadowColor = 'rgba(0,0,0,0.5)';
-            ctx.shadowBlur = 5;
-            ctx.fillRect(180, charY - 20, 20, 20);
-            ctx.shadowBlur = 0;
+        function drawJump() {
+            ctxJ.clearRect(0, 0, canvasJump.width, canvasJump.height);
+            ctxJ.fillStyle = '#6c757d'; ctxJ.fillRect(0, 180, canvasJump.width, 20); // Piso
+            ctxJ.fillStyle = '#0dcaf0'; ctxJ.fillRect(180, charY - 20, 20, 20); // Personaje
         }
-
-        function physicsLoop() {
+        function physicsJump() {
             if (!isJumping) return;
-            // Ecuación cinemática discreta
-            let g = parseFloat(gSlider.value) * 0.1; // Escalado de aceleración para 60fps canvas
-            currentVelocity -= g;
-            charY -= currentVelocity;
+            currentVel -= parseFloat(document.getElementById('g-slider').value) * 0.1;
+            charY -= currentVel;
+            if (charY >= 180) { charY = 180; isJumping = false; currentVel = 0; cancelAnimationFrame(animFrameJ); }
+            else { animFrameJ = requestAnimationFrame(physicsJump); }
+            drawJump();
+        }
+        document.getElementById('btn-jump').addEventListener('click', () => {
+            if(!isJumping) { currentVel = parseFloat(document.getElementById('v0-slider').value) * 0.5; isJumping = true; physicsJump(); }
+        });
+        drawJump();
 
-            // Colisión con el piso
-            if (charY >= 180) {
-                charY = 180;
-                isJumping = false;
-                currentVelocity = 0;
-                cancelAnimationFrame(animFrame);
-            } else {
-                animFrame = requestAnimationFrame(physicsLoop);
-            }
-            drawScene();
+        /* ============================
+           TEMAS 6 Y 9 (AVANCE 2) - DATOS
+           ============================ */
+        // Tema 6: Gráfica de Balance de Energía EV
+        const ctxEV = document.getElementById('evChart').getContext('2d');
+        new Chart(ctxEV, {
+            type: 'bar',
+            data: {
+                labels: ['Velocidad Crucero', 'Inicio Frenado', 'Frenado Medio', 'Detención Completa'],
+                datasets: [
+                    { label: 'Energía Cinética Restante (KJ)', data: [1500, 1000, 400, 0], backgroundColor: '#0dcaf0' },
+                    { label: 'Energía Acumulada a Batería (KJ)', data: [0, 375, 825, 1125], backgroundColor: '#198754' },
+                    { label: 'Energía Perdida en Calor (KJ)', data: [0, 125, 275, 375], backgroundColor: '#dc3545' }
+                ]
+            },
+            options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: 'Energía (Kilojoules)' } } } }
+        });
+
+        // Tema 9: Gráfica Voyager
+        const ctxVoyager = document.getElementById('voyagerChart').getContext('2d');
+        new Chart(ctxVoyager, {
+            type: 'line',
+            data: {
+                labels: ['Tierra', 'Marte', 'Cinturón', 'Júpiter (Llegada)', 'Júpiter (Salida)', 'Saturno (Llegada)', 'Saturno (Salida)', 'Urano (Llegada)', 'Urano (Salida)'],
+                datasets: [{
+                    label: 'Velocidad Heliocéntrica (km/s)',
+                    data: [36, 28, 15, 10, 26, 15, 21, 14, 19],
+                    borderColor: '#fd7e14',
+                    backgroundColor: 'rgba(253, 126, 20, 0.2)',
+                    pointBackgroundColor: ['#fff','#fff','#fff','#ff0000','#00ff00','#ff0000','#00ff00','#ff0000','#00ff00'],
+                    pointRadius: 6,
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: { responsive: true, scales: { y: { title: { display: true, text: 'Velocidad (km/s)' } } } }
+        });
+
+        /* ============================
+           TEMA 7 (AVANCE 2) - SIMULACIÓN REBOTE
+           ============================ */
+        const canvasBounce = document.getElementById('bounceCanvas');
+        const ctxB = canvasBounce.getContext('2d');
+        let ballY = 20; 
+        let ballVel = 0; 
+        let isDropping = false; 
+        let animFrameB;
+        const gravity = 0.5; // Gravedad constante en la simulación
+
+        const eSlider = document.getElementById('e-slider');
+        eSlider.oninput = function() { document.getElementById('e-val').innerText = this.value; }
+
+        function drawBounce() {
+            ctxB.clearRect(0, 0, canvasBounce.width, canvasBounce.height);
+            // Dibujar piso
+            ctxB.fillStyle = '#495057';
+            ctxB.fillRect(0, 180, canvasBounce.width, 20);
+            // Dibujar pelota
+            ctxB.beginPath();
+            ctxB.arc(200, ballY, 15, 0, Math.PI * 2);
+            ctxB.fillStyle = '#0dcaf0';
+            ctxB.fill();
+            ctxB.stroke();
         }
 
-        btnJump.addEventListener('click', () => {
-            if(!isJumping) {
-                currentVelocity = parseFloat(v0Slider.value) * 0.5; // Escalado de impulso inicial
-                isJumping = true;
-                physicsLoop();
+        function physicsBounce() {
+            if (!isDropping) return;
+            
+            ballVel += gravity;
+            ballY += ballVel;
+            
+            // Lógica de colisión y coeficiente de restitución
+            if (ballY + 15 >= 180) { 
+                ballY = 180 - 15; // Ajustar a la superficie
+                let e = parseFloat(eSlider.value);
+                ballVel = -ballVel * e; // Aplicar pérdida por colisión
+                
+                // Umbral para detener por completo (evitar temblores infinitos)
+                if(Math.abs(ballVel) < 1.5) {
+                    ballVel = 0;
+                    isDropping = false;
+                    cancelAnimationFrame(animFrameB);
+                    drawBounce();
+                    return;
+                }
+            }
+            
+            animFrameB = requestAnimationFrame(physicsBounce);
+            drawBounce();
+        }
+
+        document.getElementById('btn-drop').addEventListener('click', () => {
+            // Reiniciar estado
+            ballY = 20;
+            ballVel = 0;
+            if(!isDropping) {
+                isDropping = true;
+                physicsBounce();
             }
         });
 
-        drawScene(); // Inicializar estado estático
+        drawBounce(); // Dibujar estado inicial estático
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
